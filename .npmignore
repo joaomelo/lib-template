@@ -1,1 +1,7 @@
+build/
+coverage/
+env/
+src/
 node_modules/
+.*
+*.config.*

@@ -1,1 +1,1 @@
-export * from './bus';
+export * from './lib';
