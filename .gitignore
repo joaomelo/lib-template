@@ -1,4 +1,4 @@
-#env/ uncomment after clone
+#env/ uncomment after repository clone
 dist/
 node_modules/
 coverage/

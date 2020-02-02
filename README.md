@@ -1,14 +1,22 @@
-# LIBRARY
+# Library
 
-What is the purpuse of this library
+This section should be used to state the purpuse of the library.
 
-## Installation
+## Motivation
 
-install with npm with the command `npm install @joaomelo/library`
+The central problem that justify the creation of this library, this makes clear the relevance of the solution.
 
-## Getting Started
+## Usage
 
-You use the library like this
+Maybe some small text that gives a broad sense of how to library is used than a call to let's start installing our package and keep the explanation going on. 
+
+### Installation
+
+Install with npm with the command `npm install @joaomelo/library`
+
+### Getting Started
+
+Here you describe the basic usage scenario of the library.
 
     //a.js
     import { bla } from '@joaomelo/library';
@@ -26,9 +34,21 @@ Then you can ....
 
     blabla('ahhh');
 
+### Some edge case sections
+
+If the library use gets complex sections could be created to address more features.
+
+## Wrapping up
+
+Maybe some ending message to state pitfalls or trade-offs. Totally optional.
+
 ## Testing
 
-The package has 100% test coverage. To run the tests install dependencies with `npm install` then run `npm test`
+The package has 100% test coverage. To run the tests, clone the repository, install all dev dependencies and have fun.
+
+    git clone https://github.com/joaomelo/bus.git
+    npm install
+    npm test
 
 ## License
 

@@ -6,11 +6,13 @@ module.exports = {
     parser: 'babel-eslint'
   },
   rules: {
-    semi: ['error', 'always']
+    semi: ['error', 'always'],
+    'jest/no-test-callback': 'off'
   },
   extends: [
     'standard',
+    'plugin:vue/recommended',
     'plugin:jest/all'
   ],
-  plugins: ['jest']
+  plugins: ['vue', 'jest']
 };
