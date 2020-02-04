@@ -1,7 +1,9 @@
-#env/ uncomment after repository clone
 dist/
 node_modules/
 coverage/
+
+# uncomment after repository clone
+# *.env/ 
 
 # Logs
 logs
