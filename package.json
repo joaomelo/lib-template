@@ -1,6 +1,6 @@
 {
-  "name": "lib_template",
-  "version": "2.0.2",
+  "name": "@joaomelo/lib_template",
+  "version": "0.0.1",
   "description": "template library",
   "main": "lib/dist/index.js",
   "scripts": {
@@ -14,9 +14,9 @@
     "bump:patch": "npm run pack && npm version patch && npm run push",
     "bump:minor": "npm run pack && npm version minor && npm run push",
     "bump:major": "npm run pack && npm version major && npm run push",
-    "release:patch": "npm run bump:patch && npm publish",
-    "release:minor": "npm run bump:minor && npm publish",
-    "release:major": "npm run bump:minor && npm publish"
+    "release:patch": "npm run bump:patch && npm publish --access public",
+    "release:minor": "npm run bump:minor && npm publish --access public",
+    "release:major": "npm run bump:minor && npm publish --access public"
   },
   "repository": {
     "type": "git",
