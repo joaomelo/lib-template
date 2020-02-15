@@ -46,7 +46,7 @@ Maybe some ending message to state pitfalls or trade-offs. Totally optional.
 
 The package has 100% test coverage. To run the tests, clone the repository, install all dev dependencies and have fun.
 
-    git clone https://github.com/joaomelo/bus.git
+    git clone https://github.com/joaomelo/lib-template.git
     npm install
     npm test
 
