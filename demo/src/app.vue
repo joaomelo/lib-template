@@ -1,42 +1,27 @@
 <template>
-  <div>
-    <input
-      v-model="a"
-      type="number"
-    >
-    <br><br>
-    <input
-      v-model="b"
-      type="number"
-    >
-    <br><br>
-    <button @click="add">
-      add
-    </button>
-    <br><br>
-    <input
-      v-model="total"
-      type="number"
-    >
-  </div>
+  <v-app>
+    <v-content>
+      <v-container>
+        <v-row>
+          <v-col cols="3" />
+          <v-col
+            cols="6"
+            class="grey lighten-5"
+          >
+            <Demo />
+          </v-col>
+          <v-col cols="3" />
+        </v-row>
+      </v-container>
+    </v-content>
+  </v-app>
 </template>
 
 <script>
-import { add } from '__lib';
+import Demo from './demo';
 
 export default {
   name: 'App',
-  data () {
-    return {
-      a: 0,
-      b: 0,
-      total: 0
-    };
-  },
-  methods: {
-    add () {
-      this.total = add(this.a, this.b);
-    }
-  }
+  components: { Demo }
 };
 </script>
