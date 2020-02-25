@@ -1,55 +1,35 @@
-# Library
+# Lib-template
 
-This section should be used to state the purpuse of the library.
+This repository is a template to make development of npm packages more straight forward. This first section should be used to state the purpose of the library and it main parts.
 
 ## Motivation
 
-The central problem that justify the creation of this library, this makes clear the relevance of the solution.
+The central problem that justify the creation of this library, this makes the relevance of the solution clear.
 
-## Usage
+# Usage
 
-Maybe some small text that gives a broad sense of how to library is used than a call to let's start installing our package and keep the explanation going on. 
+Some small text that gives a broad sense of how to use library. 
 
-### Installation
+## Getting Started
 
-Install with npm with the command `npm install @joaomelo/library`
+How to install, import and initialize the package. If external dependencies exists, inform those and link installation instructions.
 
-### Getting Started
+## A feature
 
-Here you describe the basic usage scenario of the library.
+Section to explain some concept of the package usage.
 
-    //a.js
-    import { bla } from '@joaomelo/library';
+## Another feature
 
-    function callback(){
-      console.log(payload);
-    };
-
-    bla(callback);
-
-Then you can ....
-
-    //b.js
-    import { blabla } from '@joaomelo/library';
-
-    blabla('ahhh');
-
-### Some edge case sections
-
-If the library use gets complex sections could be created to address more features.
+Same as last one.
 
 ## Wrapping up
 
-Maybe some ending message to state pitfalls or trade-offs. Totally optional.
+Ending message recapitulating usage. Maybe inform about pitfalls or trade-offs involving the library usage.
 
-## Testing
+# Testing and Demo
 
-The package has 100% test coverage. To run the tests, clone the repository, install all dev dependencies and have fun.
+If available, inform how to clone and install the package. Also instruction to run the demo and tests. If involved in the process, describe how environment variables are injected.
 
-    git clone https://github.com/joaomelo/lib-template.git
-    npm install
-    npm test
-
-## License
+# License
 
 Made by [João Melo](https://www.linkedin.com/in/joaomelo81/?locale=en_US) and licensed under the GNU General Public License v3.0 - see the [LICENSE](LICENSE) file for details
