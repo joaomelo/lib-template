@@ -56,7 +56,11 @@ In the home directory we find a lot of files from various developemnt tools we w
 
 Those directories and files serve as a guide to present the library template. Talking about them is the canvas for the technical decisions aournd this arranjement we have here.
 
-I built try to follow a order that i imagine is the most pedagogical one. And go on like we are creating the library from scratch.
+I built a series of posts following a order that i imagine is the most pedagogical one. And go on the series like we were creating the library from scratch. You can read the posts from the links bellow.
+
+- Creating a NPM library from Scratch: XXX  pt 1  
+
+
 
 # npm
 
