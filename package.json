@@ -1,5 +1,5 @@
 {
-  "name": "@joaomelo/lib-template",
+  "name": "@joaomelo/lib",
   "version": "0.1.6",
   "description": "template library",
   "main": "lib/dist/index.js",
@@ -20,7 +20,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/joaomelo/lib-template.git"
+    "url": "git+https://github.com/joaomelo/lib.git"
   },
   "keywords": [
     "keyords",
@@ -29,9 +29,9 @@
   "author": "joaomelo",
   "license": "GPL-3.0",
   "bugs": {
-    "url": "https://github.com/joaomelo/lib-template/issues"
+    "url": "https://github.com/joaomelo/lib/issues"
   },
-  "homepage": "https://github.com/joaomelo/lib-template#readme",
+  "homepage": "https://github.com/joaomelo/lib#readme",
   "devDependencies": {
     "@babel/cli": "^7.8.4",
     "@babel/core": "^7.9.0",

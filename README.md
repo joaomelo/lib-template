@@ -1,22 +1,72 @@
-# Lib-template
+# Lib
 
-This repository is a template to make development of npm packages more straight forward. This first section should be used to state the purpose of the library and it main parts.
+This is a optioned javascript template library that aims to make development of npm packages more straight forward. The code itself has no pratical utility. The point is to serve as placeholder to actual features to be developed using the template.
 
-## Motivation
+# Motivation
 
-The central problem that justify the creation of this library, this makes the relevance of the solution clear.
+That are a lot of moving parts when we talk about building a npm library. There are the basic challenges of almost all modern javascript apps like how to lint, compile and build the code, but there is also nuanced problems particularry to the subject of npm packages like with module system will be able to import the final package and should aim to maximum compress or favor readability of the lib code by whom imported it?
 
-# Usage
+The library template is a personal approach to the problem.
 
-Some small text that gives a broad sense of how to use library. 
+# Getting Started
 
-## Getting Started
+If you want to install the library from npm (i can not image why 😅), you do that installing the library in a project with npm.
 
-How to install, import and initialize the package. If external dependencies exists, inform those and link installation instructions.
+    npm i @joaomelo/lib
 
-## A feature
+To start a library project using this repo as a template (now we are talking 🙂) there two ways. The first is clone the repo with git.
 
-Section to explain some concept of the package usage.
+    git clone https://github.com/joaomelo/lib.git
+
+Or create a repository directly in github using this as a template. Github has specific instructions how to do that [here] (https://help.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-from-a-template)
+
+From now on, we are going to explore the library pieces. And i should wanr you about something before that.
+
+> You will be faced with decisions i made that haveabundant alternatives and you must not assume by any means i am saying the ones bellow are the best. They work enough for my use cases that i am not looking for replacement right now. I be shameless to change then at any moment they limit my workflow.
+
+# Files and Directory Structure
+
+In the home directory we find a lot of files from various developemnt tools we will explore later and four subdirectories and some them with subdirectories of their own:
+
+```
+- home
+  - .github
+  - .vscode
+  - config
+  - demo
+    - config
+    - dist
+    - src
+  - lib
+    - config
+    - dist
+    - src
+  .browserslistrc
+  .eslintrc.js
+  .gitignore
+  .npmignore
+  babel.config.js
+  jest.config.js
+  jsconfig.json
+  LICENSE
+  package.json
+  package-lock.json
+  README.md
+```
+
+Those directories and files serve as a guide to present the library template. Talking about them is the canvas for the technical decisions aournd this arranjement we have here.
+
+I built try to follow a order that i imagine is the most pedagogical one. And go on like we are creating the library from scratch.
+
+# npm
+
+
+
+## .github and .gitignore
+
+The directory holds the all github action workflows for a project. Is this case we have just one. It will respond to every git push to the master branch by testing, updating the package version and publish it in npm.
+
+The intension I wrote a [blog post]() that details the workflow and you can read it to get more insigth on how to use the workflow
 
 ## Another feature
 
