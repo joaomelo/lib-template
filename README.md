@@ -80,22 +80,39 @@ The lib config is more peculiar because it address the creation of js libraries.
 
 ## Babel
 
-We talked about the use of babel. When dealing with libraries i think the most simple the better. So i use the most standard babel approach.
+Babel is used to compile javascript newest features used in the library code to a code base compatible to the library target environment. 
 
-confirm the if all packages are really neded
-migrate to json
+The temptable uses `@babel/preset-env` that computes the necessary conversion dynamically. You can read more about it [here](https://babeljs.io/docs/en/babel-preset-env).
 
-avoid another file integrating ".browserslistrc" and metion the danting decision to  support and link to docs
+That will create a clean `babel.config.js` file. But `preset-env` depends on a [Browserslist](https://babeljs.io/docs/en/babel-preset-env#browserslist-integration) configuration that will tell babel to which enviroment comppile to. 
+
+That environment information is saved as enviroment query on `.browserslistrc` file. That is a very particular decision for each project. So I recommended  you check Browserslist [docs](https://github.com/browserslist/browserslist) to make sure the file query is fitted to the project. This template use the project defaults, includes nodes and rejects IE. 
+
+# Code Quality
+
+Linting and testing are important techniques to delivery safe ans useful libraries. The template use [ESLint](https://eslint.org/) and [Jest](https://jestjs.io/) for those tasks.
+
+## Lint Setup
+
+ESlint is very straightforward to setup. We need some packages and a `.eslintrc.js` configurations file.
+
+This template already contains the configuration file content and additional packages to use ESLint with the [standard](https://github.com/standard/eslint-config-standard) configuration. The lint file also have the proper content to integrate Jest.
+
+## Jest
+
+I will admit that as time of this writing i struggle to development using a strong test mindset. I find myself have difficulty to get out of corners when i need to test async code specially dealing with external calls to services like database or auth systems 😳. 
+
+But we only arrive at someplace if we start walking to its direction 😅. That's why Jest is here.
+
+The package and `jest.config` config files are set to test the libraries files and provide information on code coverage.
 
 ## .github and .gitignore
 
 The directory holds the all github action workflows for a project. Is this case we have just one. It will respond to every git push to the master branch by testing, updating the package version and publish it in npm.
 
-The intension I wrote a [blog post]() that details the workflow and you can read it to get more insigth on how to use the workflow
+The intension I wrote a [blog post]() that details the workflow and you can read it to get more insight on how to use the workflow
 
-## Another feature
 
-Same as last one.
 
 ## Wrapping up
 
