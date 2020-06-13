@@ -4,9 +4,11 @@
   "description": "An optioned javascript template library. It aims to make npm packages development more straight forward. The code itself has no practical utility; it serves as a placeholder to be replaced by developers using the template.",
   "main": "lib/dist/index.js",
   "scripts": {
-    "start": "webpack-dev-server --config demo/config/webpack.config.js",
+    "start": "npm run dev:lib",
+    "dev:lib": "jest --watch --coverage=false",
+    "dev:demo": "webpack-dev-server --config demo/config/webpack.config.js",
     "lint": "eslint */src/**/*.js",
-    "test": "jest",
+    "test": "npm run lint && jest",
     "build": "rimraf lib/dist/* && webpack --config lib/config/webpack.config.js",
     "deploy": "npm run build && npm publish --access public"
   },

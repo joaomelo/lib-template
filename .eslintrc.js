@@ -9,7 +9,8 @@ module.exports = {
   rules: {
     semi: ['error', 'always'],
     'no-debugger': 'off',
-    'jest/no-test-callback': 'off'
+    'jest/no-test-callback': 'off',
+    'jest/prefer-expect-assertions': 'off'
   },
   extends: [
     'standard',

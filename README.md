@@ -22,7 +22,7 @@ Or create a repository directly in github using this as a template. Github has s
 
 From now on, we are going to explore the library pieces. And i should wanr you about something before that.
 
-> You will be faced with decisions i made that haveabundant alternatives and you must not assume by any means i am saying the ones bellow are the best. They work enough for my use cases that i am not looking for replacement right now. I be shameless to change then at any moment they limit my workflow.
+> You will be faced with decisions i made that have abundant alternatives and you must not assume by any means i am saying the ones bellow are the best. They work enough for my use cases that i am not looking for replacement right now. I'll be shameless to change then at any moment they limit my workflow but also have no desire to update them to the latest tech while working fine.
 
 # Directory Structure
 
@@ -32,11 +32,10 @@ In the home directory we find a lot of files from various developemnt tools we w
 📂home
   📁.github // github actions workflow file for ci/cd pipeline.
   📁.vscode // improves sanity with config for my editor of choice.
-  📁config  // webpack common configuration file.
   📁demo    // files for an example working app that uses the lib code.
   📁lib     // actual npm library code.
 ```
-We will go trhougth them one way or another in the folling sections.
+We will go through them one way or another in the folling sections.
 
 # npm
 
@@ -46,10 +45,10 @@ Npm in the first place to start building our library. After initializing `packag
   "name": "@joaomelo/lib",
   "main": "lib/dist/index.js",
   "scripts": {
-    "start": "webpack-dev-server --config demo/cfg/webpack.config.js",
+    "start": "webpack-dev-server --config demo/config/webpack.config.js",
     "lint": "eslint */src/**/*.js",
     "test": "jest",
-    "build": "rimraf lib/dist/* webpack --config lib/cfg/webpack.config.js",
+    "build": "rimraf lib/dist/* webpack --config lib/config/webpack.config.js",
     "deploy": "npm run build && npm publish --access public"
   },
 ```
@@ -64,11 +63,11 @@ One other important file related to npm setup is the `.npmignore`. It tells npm 
 
 # Build Pipeline
 
-The template uses webpack and babel to build demo and library code. TheIn the config folder there is a `webpack.common.js` with little shared configuration between the demo and library.
+The template uses webpack and babel to build demo and library code. 
 
 ## Webpack
 
-The is the typical linting and build of js files with babel.
+The root folder has a `webpack.common.js` with shared configuration between the demo and library. The is the typical linting and build of js files with babel.
 
 It defaults to using source-maps evening in the library output. I find fair to give everyone using a library (including my future self), to be able to debug any unexpected behavior.
 
@@ -124,16 +123,21 @@ I think demo should have as vanilla as possibile to not confuse who is seen the 
 
 There is a basic css file to make simple to just overwrite what is there.
 
+## Lib
 
-## .github and .gitignore
+As stated before the lib exports a simple class. Inside the lib `src` sub-folder we will also find the jest test files following their naming convention. If we type `npm start` in the command line, the script will run Jest in a continuos watch mode, so one can write their library business and test code while watching the tests results evolving in the command line. Like that, is easier to adopt test driven development methodology. 
 
-The directory holds the all github action workflows for a project. Is this case we have just one. It will respond to every git push to the master branch by testing, updating the package version and publish it in npm.
+## Git and Continuos Integration
 
-The intension I wrote a [blog post]() that details the workflow and you can read it to get more insight on how to use the workflow
+The way we git has a huge impact in this template because of the use of Github Actions.
 
-For evenry effect your master brach is now you production eviroment. That demands some mindset adjustment, because you will keeo the development in braches and protect who and how can push code to master.
+Inside `.github` there is a `npm-publish.yml` file that specifies a script that will run every time there is a push to the remote master branch. 
 
-If you don't like that aprroach make sure to delete the .github folder or adjust trigger event in `npm-publish` workflow file.
+The script will bump the library version accordingly to the last [commit message](https://github.com/phips28/gh-action-bump-version#workflow) and run the test script. If everything went well, it will publish the new version to npm. For that last part to work you must [save your npm key as a secreted](https://help.github.com/en/actions/language-and-framework-guides/publishing-nodejs-packages#publishing-packages-to-the-npm-registry) in the repo.
+
+That workflow make the master brach very sensitive. It is important to keep ongoing development in branches. Maybe consider even [restricting pushes to master](https://help.github.com/en/github/administering-a-repository/enabling-branch-restrictions) if not coming from pull requests.
+
+If you don't like that approach make sure to delete the `.github` folder or adjust the trigger event in `npm-publish` file to the desired flag.
 
 # Editor Configuration
 
