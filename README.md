@@ -30,9 +30,9 @@ In the home directory we find a lot of files from various developemnt tools we w
 
 ``` js
 📂home
-  📁.github // workflow file for github actions ci/cd pipeline.
-  📁.vscode // improves sanity with config for my editor. you can just delete it or replace with your own. 
-  📁config  // config folder has webpack common configuration file.
+  📁.github // github actions workflow file for ci/cd pipeline.
+  📁.vscode // improves sanity with config for my editor of choice.
+  📁config  // webpack common configuration file.
   📁demo    // files for an example working app that uses the lib code.
   📁lib     // actual npm library code.
 ```
@@ -59,6 +59,8 @@ There things above that will be attended later is this file like test and build 
 If you are publishing a public library but using scoping it under you username like i did in `@joaomelo/lib` , the publish script must have the `--access public` parameter.
 
 This [article](https://docs.npmjs.com/creating-a-package-json-file) and it series have useful information about the ideal `package.json` file for npm libraries. 
+
+One other important file related to npm setup is the `.npmignore`. It tells npm what to include in the package. The template approach is to ignore everything that is not in the `lib\dist` folder. Npm will also include some files no matter of what we write here. You can check more about the file [here](https://docs.npmjs.com/using-npm/developers.html#keeping-files-out-of-your-package).
 
 # Build Pipeline
 
@@ -104,7 +106,24 @@ I will admit that as time of this writing i struggle to development using a stro
 
 But we only arrive at someplace if we start walking to its direction 😅. That's why Jest is here.
 
-The package and `jest.config` config files are set to test the libraries files and provide information on code coverage.
+The package and `jest.config` config files are set to test the library code and provide information on test coverage.
+
+To test the library just run the `npm test` command.
+
+# Code We Will
+
+There are really two placeholder code bases one for the demo and other for the library that will be distributed. We are using a silly example just to make sure averything is tied. The library export a `Accumulator` class that creates objects with three methods: `add` wich adds the value to the accumulator states, `value` that returns the accumulator and `clear` that resets the accumulator state to the initial zero value.
+
+## Demo
+
+The demo is a app that uses the library. It is useful to present a library use case to other developers, running code sometimes can be more pedagogical then documentation.
+
+The demo do not import the library from npm itself but directly from the lib page. So do not assume that a working demo means everyone thats import your library will have a positive experience. You can leverage the demo to test the final library distribution locally but you will need to do some work with [npm links](https://docs.npmjs.com/cli/link).
+
+I think demo should have as vanilla as possibile to not confuse who is seen the code. Let's say you have a framework of choice and make your demo with it. An unfamiliar developer maybe have trouble to distinguish wich of your framework is related to the library usage model. That's no cool. So the code on the template aims to stimulate that. 
+
+There is a basic css file to make simple to just overwrite what is there.
+
 
 ## .github and .gitignore
 
@@ -112,7 +131,17 @@ The directory holds the all github action workflows for a project. Is this case 
 
 The intension I wrote a [blog post]() that details the workflow and you can read it to get more insight on how to use the workflow
 
+For evenry effect your master brach is now you production eviroment. That demands some mindset adjustment, because you will keeo the development in braches and protect who and how can push code to master.
 
+If you don't like that aprroach make sure to delete the .github folder or adjust trigger event in `npm-publish` workflow file.
+
+# Editor Configuration
+
+lauch.json is ther to link to my debug profile in chrome. That is iseful to debug stuff without extensions getting in the way.
+
+The jsconfig is there to explicit teel vscode this is a javascript (and not a typescript project), since i had some conflicts in the past and make the editor recognize folder alias used in the webpack configurations. 
+
+If you don't use vscode just delete de folder and root file. If you use vscode and have your own setup go ahead and delete also.
 
 ## Wrapping up
 

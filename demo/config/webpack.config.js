@@ -5,7 +5,7 @@ const Dotenv = require('dotenv-webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const merge = require('webpack-merge');
-const common = require('../../config/webpack.common.js');
+const common = require('../../webpack.common.js');
 
 const demoSrc = path.resolve(__dirname, '../src');
 const demoDist = path.resolve(__dirname, '../dist');
