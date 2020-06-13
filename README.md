@@ -141,20 +141,20 @@ If you don't like that approach make sure to delete the `.github` folder or adju
 
 # Editor Configuration
 
-lauch.json is ther to link to my debug profile in chrome. That is iseful to debug stuff without extensions getting in the way.
+We are almost done. Last thing to mention are  my VS Code config files. Inside `.vscode` folder there is file that setup the debug to use a debug profile I made in chrome. That is useful to debug stuff without extensions getting in the way.
 
-The jsconfig is there to explicit teel vscode this is a javascript (and not a typescript project), since i had some conflicts in the past and make the editor recognize folder alias used in the webpack configurations. 
+Another file related to VS Code is `jsconfig.json` and it sits in the priject root directory. It is there to explicit tell VS Code that this is a JavaScript (and not a TypeScript) project. I had some editor conflicts in the past. The file also makes the editor recognize the folder alias used in the webpack configuration. 
 
-If you don't use vscode just delete de folder and root file. If you use vscode and have your own setup go ahead and delete also.
+If you don't use VS Code or have your own setup, just delete the `.vscode` folder and `jsconfig.json` file.
 
 ## Wrapping up
 
-Ending message recapitulating usage. Maybe inform about pitfalls or trade-offs involving the library usage.
+That was a lot. Thank you for reading all this.
 
-# Testing and Demo
+I hope you find template useful. Reforcing what i said before, there is ambition to sell this as the ultimate sharp edge template for npm libraries. I have acumulated some lesson in the small time i am programming and made a effort to share something that is working for me.
 
-If available, inform how to clone and install the package. Also instruction to run the demo and tests. If involved in the process, describe how environment variables are injected.
+I would be glad to hear any feedback from you.
 
 # License
 
-Made by [João Melo](https://www.linkedin.com/in/joaomelo81/?locale=en_US) and licensed under the GNU General Public License v3.0 - see the [LICENSE](LICENSE) file for detailsgit pull
+Made by [João Melo](https://twitter.com/joaomeloplus) and licensed under the GNU General Public License v3.0 - see the [LICENSE](LICENSE) file for details.
