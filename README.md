@@ -1,6 +1,6 @@
-# Lib
+# Libt
 
-This is a optioned javascript template library that aims to make development of npm packages more straight forward. The code itself has no pratical utility. The point is to serve as placeholder to actual features to be developed using the template.
+An optioned javascript template library. It aims to make npm packages development more straight forward. The code itself has no practical utility; it serves as a placeholder to be replaced by developers using the template.
 
 # Motivation
 
@@ -24,47 +24,68 @@ From now on, we are going to explore the library pieces. And i should wanr you a
 
 > You will be faced with decisions i made that haveabundant alternatives and you must not assume by any means i am saying the ones bellow are the best. They work enough for my use cases that i am not looking for replacement right now. I be shameless to change then at any moment they limit my workflow.
 
-# Files and Directory Structure
+# Directory Structure
 
-In the home directory we find a lot of files from various developemnt tools we will explore later and four subdirectories and some them with subdirectories of their own:
+In the home directory we find a lot of files from various developemnt tools we will explore later and five subdirectories
 
+``` js
+📂home
+  📁.github // workflow file for github actions ci/cd pipeline.
+  📁.vscode // improves sanity with config for my editor. you can just delete it or replace with your own. 
+  📁config  // config folder has webpack common configuration file.
+  📁demo    // files for an example working app that uses the lib code.
+  📁lib     // actual npm library code.
 ```
-- home
-  - .github
-  - .vscode
-  - config
-  - demo
-    - config
-    - dist
-    - src
-  - lib
-    - config
-    - dist
-    - src
-  .browserslistrc
-  .eslintrc.js
-  .gitignore
-  .npmignore
-  babel.config.js
-  jest.config.js
-  jsconfig.json
-  LICENSE
-  package.json
-  package-lock.json
-  README.md
-```
-
-Those directories and files serve as a guide to present the library template. Talking about them is the canvas for the technical decisions aournd this arranjement we have here.
-
-I built a series of posts following a order that i imagine is the most pedagogical one. And go on the series like we were creating the library from scratch. You can read the posts from the links bellow.
-
-- Creating a NPM library from Scratch: XXX  pt 1  
-
-
+We will go trhougth them one way or another in the folling sections.
 
 # npm
 
+Npm in the first place to start building our library. After initializing `package.json` the first things to attend are the package name, the location of the library entry point and npm scripts that will be used during development. 
 
+``` json
+  "name": "@joaomelo/lib",
+  "main": "lib/dist/index.js",
+  "scripts": {
+    "start": "webpack-dev-server --config demo/cfg/webpack.config.js",
+    "lint": "eslint */src/**/*.js",
+    "test": "jest",
+    "build": "rimraf lib/dist/* webpack --config lib/cfg/webpack.config.js",
+    "deploy": "npm run build && npm publish --access public"
+  },
+```
+
+There things above that will be attended later is this file like test and build tools and other that are not shown that de default `npm init` command will take care. I will highlight the care for the `main` entry that affects how people import you library after installing it and the the need to sync deploy script and library name.
+
+If you are publishing a public library but using scoping it under you username like i did in `@joaomelo/lib` , the publish script must have the `--access public` parameter.
+
+This [article](https://docs.npmjs.com/creating-a-package-json-file) and it series have useful information about the ideal `package.json` file for npm libraries. 
+
+# Build Pipeline
+
+The template uses webpack and babel to build demo and library code. TheIn the config folder there is a `webpack.common.js` with little shared configuration between the demo and library.
+
+## Webpack
+
+The is the typical linting and build of js files with babel.
+
+It defaults to using source-maps evening in the library output. I find fair to give everyone using a library (including my future self), to be able to debug any unexpected behavior.
+
+There is also the use of `CircularDependencyPlugin` with detect modules referecing each others. Although that valid code, i fear them 😨 more then Balrogs. Those dependencies can give birth to nasty bugs very hard to track.
+
+There is also two other webpack files one in the `demo/config/webpack.config.js` and other in `lib/config/webpack.config.js`.
+
+The demo webpack config has a typical development configuration. There alias to make imports inside the code easier and anticipates the use of env with the `Dotenv` plugin files to setup access to database and apis. 
+
+The lib config is more peculiar because it address the creation of js libraries. The output property has options to make the library more flexible as possible to my knowledge. But is recommend that you check the excellent  webpack guide for [authoring Libraries](https://webpack.js.org/guides/author-libraries/) to make sure this setup corresponds to your needs.
+
+## Babel
+
+We talked about the use of babel. When dealing with libraries i think the most simple the better. So i use the most standard babel approach.
+
+confirm the if all packages are really neded
+migrate to json
+
+avoid another file integrating ".browserslistrc" and metion the danting decision to  support and link to docs
 
 ## .github and .gitignore
 
@@ -86,4 +107,4 @@ If available, inform how to clone and install the package. Also instruction to r
 
 # License
 
-Made by [João Melo](https://www.linkedin.com/in/joaomelo81/?locale=en_US) and licensed under the GNU General Public License v3.0 - see the [LICENSE](LICENSE) file for details
+Made by [João Melo](https://www.linkedin.com/in/joaomelo81/?locale=en_US) and licensed under the GNU General Public License v3.0 - see the [LICENSE](LICENSE) file for detailsgit pull
