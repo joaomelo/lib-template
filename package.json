@@ -1,6 +1,6 @@
 {
   "name": "@joaomelo/libt",
-  "version": "0.1.10",
+  "version": "0.1.11",
   "description": "Libt is an optioned JavaScript library template. The code itself has no practical utility; it serves as a placeholder to be replaced when using the template.",
   "main": "lib/dist/index.js",
   "scripts": {
