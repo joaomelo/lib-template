@@ -1,6 +1,6 @@
 # Libt
 
-Libt is an optioned JavaScript library template. The code itself has no practical utility; it serves as a replaceable placeholder when using the template.
+Libt is an opinionated JavaScript library template. The code itself has no practical utility; it serves as a replaceable placeholder when using the template.
 
 # Motivation
 
