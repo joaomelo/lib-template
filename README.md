@@ -19,7 +19,7 @@ There are two ways to start your library project using this repo as a template (
     git clone https://github.com/joaomelo/lib.git
     npm i
 
-The second is to create a repository directly in GitHub using this repository as a template. GitHub has specific instructions on how to do that [here] (https://help.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-from-a-template)
+The second is to create a repository directly in GitHub using this repository as a template. GitHub has specific instructions on how to do that [here](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-from-a-template)
 
 From now on, we will explore the library components, but I should warn you about something before that.
 
@@ -31,9 +31,9 @@ In the home directory, we find a lot of files from various development tools tha
 
 ``` js
 📂home
-  📁.github // GitHub actions workflow file for ci/cd pipeline
-  📁.vscode // improves sanity with config for my editor of choice
-  📁demo    // files for a working app example that uses the lib code
+  📁.github // github actions file for ci/cd pipeline
+  📁.vscode // improves sanity with config for my editor
+  📁demo    // app example that uses the lib code
   📁lib     // actual npm library code
 ```
 We will go through them one way or another in the following sections.
@@ -66,15 +66,15 @@ There are two other Webpack files, one in `demo/config/webpack.config.js` and th
 
 The demo Webpack config has aliases to make imports inside the code more accessible. It also anticipates the use of environment variables setting the `Dotenv` plugin. 
 
-The lib config is more peculiar because it addresses the creation of js libraries. The output property is set with options to make the bundle more flexible as possible to import. Nevertheless, I recommend that you check the excellent Webpack guide for [authoring libraries](https://webpack.js.org/guides/author-libraries/) to ensure this setup corresponds to your needs.
+The lib config is more peculiar. The output property is set with options to make the bundle as flexible as possible to import. Nevertheless, I recommend that you check the excellent Webpack guide for [authoring libraries](https://webpack.js.org/guides/author-libraries/) to ensure this setup corresponds to your needs.
 
 ## Babel
 
 Babel is used to compiling JavaScript's newest features to a codebase compatible to an arbitrary target environment. 
 
-Libt uses the` @babel/preset-env` package to compute the necessary conversion. The [Browserslist](https://babeljs.io/docs/en/babel-preset-env#browserslist-integration)  configuration file (`.browserslistrc`) will guide `preset-env` to the desired environment. Libt query uses Browserslist defaults, includes nodes, and rejects IE. 
+Libt uses the` @babel/preset-env` package to compute the necessary conversions. The [Browserslist](https://babeljs.io/docs/en/babel-preset-env#browserslist-integration) configuration file (`.browserslistrc`) will guide `preset-env` to the desired environment. Libt query uses Browserslist defaults, includes node, and rejects IE. 
 
-It is crucial to notice that this is a particular decision for each project. I recommended you check Browserslist [docs](https://github.com/browserslist/browserslist) to ensure the choice of a query that fits your project. 
+It is crucial to notice that this is a particular decision for each project. I recommended you check Browserslist [docs](https://github.com/browserslist/browserslist) to choose a query that fits your project. 
 
 # Code Quality
 
@@ -88,29 +88,29 @@ Libt contains setup values and additional packages to use ESLint with the [stand
 
 ## Jest
 
-I will admit that as of the time of this writing, I struggle to develop using a healthy test mindset 😳. I find myself having difficulty to test async code, especially dealing with external calls to services like database or auth systems. But we only arrive at someplace if we start walking in its direction 😅. That's why this template includes Jest.
+As of the time of this writing, I struggle to develop using a healthy test mindset 😳. I find myself having difficulty to test async code, especially dealing with external calls to services like database or auth systems. But we only arrive at someplace if we start walking in its direction 😅. That's why Libt includes Jest.
 
-Libt includes the Jest package, and a basic `jest.config` set to record test coverage. The `package.json` also has a test script to lint and test the project and a start script, which will run tests continually while development is ongoing.  This way, it is easier to adopt a test-driven development methodology. 
+Besides the package there is a basic `jest.config` file set to record test coverage. The `package.json` also has a test script to lint and test the project and a start script, which will run tests continually while development is ongoing.  This way, it is easier to adopt a test-driven development methodology. 
 
 # Time to Code
 
-There are two placeholder codebases: one for the demo and another for the library package. We are using a silly example just to make sure everything is tied and sound. 
+There are two placeholder codebases: one for the demo and another for the library package. They reside in `demo` and `lib` folders respectively. We are using dummy code in both, their goal is just to make sure everything is tied and sound. 
 
 ## Lib
 
-The library export an `Accumulator` class that instantiates objects with three methods: `add` the passed value to the accumulator state, `value` will return the accumulator state value, and `clear` resets the accumulator state to the initial zero.
+The library export an `Accumulator` class that instantiates objects with three methods: `add` the passed value to the accumulator state, `value` will return the accumulator state, and `clear` resets the accumulator state to zero.
 
-Inside the lib `src` sub-folder, we will also find the jest test files following their naming convention.
+Inside the lib `src` sub-folder, we will also find Jest test files following their naming convention.
 
 ## Demo
 
-The demo is an app that uses the library. The demo app will not ship to npm. It will reside in the repository to complement our library documentation to other developers. Running code sometimes can be more pedagogical then documentation.
+The demo is an app that uses the library and will not ship to npm. It resides in the repository to complement our library documentation with a running code example.
 
-The demo does not import the library from npm itself but directly from the lib folder. Do not assume that a working demo means everyone will import our library with a positive experience. One can leverage the demo to test the final library distribution locally but will need to do some work with [npm links](https://docs.npmjs.com/cli/link).
+The demo does not import the library from npm itself but directly from the lib folder. Do not assume that a working demo means everyone will import the library with a positive experience. Nevertheless, the demo could be leveraged to test the final library distribution locally, but some work with [npm links](https://docs.npmjs.com/cli/link) will be needed.
 
 I believe the demo app should be as vanilla as possible. Let's say you have a framework of choice and make your demo with it. An unfamiliar developer will probably be confused distinguishing if the framework code is related or even required to use the library.
 
-There is also a dummy CSS file to make demo styling simple. Just overwrite what is there, and we should be good to go. The demo app runs with the `npm run dev:demo` command
+There is also a dummy CSS file to make demo styling simple. Just overwrite what is there, and we should be good to go just typing `npm run dev:demo` in the command line.
 
 ## Git and Continuous Integration
 
@@ -122,9 +122,9 @@ The script will bump the library version accordingly to the last [commit message
 
 For that last part to work, you must save your [npm key as a secreted](https://help.github.com/en/actions/language-and-framework-guides/publishing-nodejs-packages#publishing-packages-to-the-npm-registry) in the repo settings.
 
-That workflow makes the master branch very sensitive. It is essential to keep ongoing development in secondary branches. Maybe consider even [restricting pushes to master](https://help.github.com/en/github/administering-a-repository/enabling-branch-restrictions) and use "pull requests" with test conditions.
+That workflow makes the master branch very sensitive. It is essential to keep ongoing development in secondary branches. Maybe consider even [restricting pushes to master](https://help.github.com/en/github/administering-a-repository/enabling-branch-restrictions) and enforce "pull requests" with test conditions.
 
-If you don't like that approach make sure to delete the `.github` folder or adjust the trigger event in the `npm-publish` file to the desired flag.
+If you don't like that approach make sure to delete the `.github` folder or adjust the trigger event in the `npm-publish` file.
 
 # Editor Configuration
 
@@ -138,7 +138,7 @@ If you don't use VS Code or have your setup, just delete `.vscode` folder and `j
 
 That was a lot. Thank you for staying until the end.
 
-I hope you find Libt useful. Reinforcing what I said before, there is no ambition to sell this as the ultimate sharp edge template for npm libraries. I have accumulated some lessons in the small-time I am programming and make an effort to share it.
+I hope you find Libt useful. Reinforcing what I said before, there is no ambition to sell this as the ultimate sharp edge template for npm libraries. I have accumulated some lessons in the small-time I am programming and made an effort to share it.
 
 I would be glad to hear any feedback from you.
 
