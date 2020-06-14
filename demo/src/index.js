@@ -1,13 +1,27 @@
-import Vue from 'vue';
-import Vuetify from 'vuetify/lib';
-import App from './app.vue';
+import './styles.css';
+import { Accumulator } from '__lib/';
 
-Vue.config.productionTip = false;
-Vue.use(Vuetify);
+const acc = new Accumulator();
 
-const vueApp = new Vue({
-  vuetify: new Vuetify(),
-  render: h => h(App)
-});
+const btnAdd = document.getElementById('btn-add');
+const btnClear = document.getElementById('btn-clear');
+const inputAdd = document.getElementById('input-add');
+const log = document.getElementById('log');
 
-vueApp.$mount('#app');
+const addLog = msg => {
+  const p = document.createElement('p');
+  p.innerText = msg;
+  log.appendChild(p);
+};
+
+btnAdd.onclick = () => {
+  const val = inputAdd.value;
+  acc.add(val);
+  addLog(`added ${val} accumulating ${acc.value()}`);
+};
+
+btnClear.onclick = () => {
+  acc.clear();
+  log.innerHTML = '';
+  addLog(`acc returned to ${acc.value()}`);
+};

@@ -1,37 +1,32 @@
 {
-  "name": "@joaomelo/lib",
+  "name": "@joaomelo/libt",
   "version": "0.1.8",
-  "description": "template library",
+  "description": "Libt is an optioned JavaScript library template. The code itself has no practical utility; it serves as a placeholder to be replaced when using the template.",
   "main": "lib/dist/index.js",
   "scripts": {
-    "start": "webpack-dev-server --config demo/config/webpack.demo.js",
-    "lint": "eslint --ext .js,.vue lib/src",
+    "start": "npm run dev:lib",
+    "dev:lib": "jest --watch --coverage=false",
+    "dev:demo": "webpack-dev-server --config demo/config/webpack.config.js",
+    "lint": "eslint */src/**/*.js",
     "test": "npm run lint && jest",
-    "build": "rimraf lib/dist/* && webpack --config lib/config/webpack.lib.js",
-    "commit": "git add -A && git commit",
-    "push": "git push && git push --tags",
-    "pack": "npm test && npm run build && npm run commit",
-    "bump:patch": "npm run pack && npm version patch && npm run push",
-    "bump:minor": "npm run pack && npm version minor && npm run push",
-    "bump:major": "npm run pack && npm version major && npm run push",
-    "release:patch": "npm run bump:patch && npm publish --access public",
-    "release:minor": "npm run bump:minor && npm publish --access public",
-    "release:major": "npm run bump:major && npm publish --access public"
+    "build": "rimraf lib/dist/* && webpack --config lib/config/webpack.config.js",
+    "deploy": "npm run build && npm publish --access public"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/joaomelo/lib.git"
+    "url": "git+https://github.com/joaomelo/libt.git"
   },
   "keywords": [
-    "keyords",
-    "forlib"
+    "template",
+    "library",
+    "npm"
   ],
-  "author": "joaomelo",
+  "author": "@joaomeloplus",
   "license": "GPL-3.0",
   "bugs": {
-    "url": "https://github.com/joaomelo/lib/issues"
+    "url": "https://github.com/joaomelo/libt/issues"
   },
-  "homepage": "https://github.com/joaomelo/lib#readme",
+  "homepage": "https://github.com/joaomelo/libt#readme",
   "devDependencies": {
     "@babel/cli": "^7.8.4",
     "@babel/core": "^7.9.0",
@@ -40,41 +35,24 @@
     "babel-jest": "^24.9.0",
     "babel-loader": "^8.1.0",
     "circular-dependency-plugin": "^5.2.0",
-    "compression-webpack-plugin": "^3.1.0",
     "css-loader": "^3.4.2",
-    "deepmerge": "^4.2.2",
     "dotenv-webpack": "^1.7.0",
     "eslint": "^6.8.0",
     "eslint-config-standard": "^14.1.1",
     "eslint-loader": "^3.0.3",
     "eslint-plugin-import": "^2.20.1",
     "eslint-plugin-jest": "^23.8.2",
-    "eslint-plugin-node": "^10.0.0",
+    "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
-    "eslint-plugin-vue": "^6.2.2",
-    "eslint-plugin-vue-libs": "^4.0.0",
-    "fibers": "^4.0.2",
-    "firebase": "^7.13.0",
     "html-webpack-plugin": "^3.2.0",
     "jest": "^24.9.0",
     "rimraf": "^3.0.2",
-    "sass": "^1.26.3",
-    "sass-loader": "^8.0.2",
     "style-loader": "^1.1.3",
-    "vue": "^2.6.11",
-    "vue-loader": "^15.9.1",
-    "vue-style-loader": "^4.1.2",
-    "vue-template-compiler": "^2.6.11",
-    "vuetify": "^2.2.19",
-    "vuetify-loader": "^1.4.3",
     "webpack": "^4.42.1",
     "webpack-cli": "^3.3.11",
     "webpack-dev-server": "^3.10.3",
     "webpack-merge": "^4.2.2"
   },
-  "dependencies": {
-    "core-js": "^3.6.4",
-    "regenerator-runtime": "^0.13.5"
-  }
+  "dependencies": {}
 }
