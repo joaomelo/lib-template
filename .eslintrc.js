@@ -10,7 +10,8 @@ module.exports = {
     semi: ['error', 'always'],
     'no-debugger': 'off',
     'jest/no-test-callback': 'off',
-    'jest/prefer-expect-assertions': 'off'
+    'jest/prefer-expect-assertions': 'off',
+    'jest/no-hooks': 'off'    
   },
   extends: [
     'standard',
