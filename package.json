@@ -21,7 +21,7 @@
     "library",
     "npm"
   ],
-  "author": "@joaomeloplus",
+  "author": "joão melo <j@melo.plus> (https://blog.melo.plus)",
   "license": "GPL-3.0",
   "bugs": {
     "url": "https://github.com/joaomelo/libt/issues"
