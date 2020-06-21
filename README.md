@@ -1,3 +1,5 @@
+![npm version template](https://img.shields.io/npm/v/@joaomelo/libt?style=plastic)
+
 # Libt
 
 Libt is an opinionated JavaScript library template. The code itself has no practical utility; it serves as a replaceable placeholder when using the template.
