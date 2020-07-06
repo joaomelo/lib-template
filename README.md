@@ -1,3 +1,4 @@
+![git build template](https://img.shields.io/github/workflow/status/joaomelo/libt/publish/master?style=plastic)
 ![npm version template](https://img.shields.io/npm/v/@joaomelo/libt?style=plastic)
 
 # Libt
@@ -45,8 +46,6 @@ We will go through all of them one way or another in the following sections.
 Activate npm in the first step to start building our library. You will find the `package.json` file already initialized in the root directory. Don't forget to overwrite with your data the appropriate fields in there like `name` and `version`. 
 
 It is essential to stress the care for the `main` entry since it will affect how people import our library after installing it.
-
-Also worth mentioning that if you are posting a [scoped public library](https://docs.npmjs.com/using-npm/scope.html), the publish script must have the `--access public` parameter.
 
 If you have any doubts, this npm [article](https://docs.npmjs.com/creating-a-package-json-file) has useful information about the ideal `package.json` file for npm libraries. 
 
@@ -118,15 +117,17 @@ There is also a dummy CSS file to simplify styling. Just overwrite what is there
 
 The way we git has a massive impact on Libt because of the use of GitHub Actions.
 
-Inside `.github` folder, there is an `npm-publish.yml` file. This file specifies a script to run every time a git push occurs on the remote master branch. 
+Inside `.github` folder, there is an `publish.yml` file. This file specifies a script to run every time a git push occurs on the remote master branch. 
 
 The script will bump the library version accordingly to the last [commit message](https://github.com/phips28/gh-action-bump-version#workflow) and run the `npm test` script. If everything goes well, it will publish the new library version to npm. 
+
+Also worth mentioning that if you are posting a [scoped public library](https://docs.npmjs.com/using-npm/scope.html), the publish script must have the `--access public` parameter.
 
 For that last part to work, you must save your [npm key as a secret](https://help.github.com/en/actions/language-and-framework-guides/publishing-nodejs-packages#publishing-packages-to-the-npm-registry) in the repo settings.
 
 That workflow makes the master branch very sensitive. It is essential to keep ongoing development in secondary branches. Maybe consider even [restricting pushes to master](https://help.github.com/en/github/administering-a-repository/enabling-branch-restrictions) and enforce "pull requests" with test conditions.
 
-If you don't like that approach just delete the `.github` folder or adjust the trigger event in the `npm-publish` file.
+If you don't like that approach just delete the `.github` folder or adjust the trigger event in the `publish.yml` file.
 
 # Editor Configuration
 
